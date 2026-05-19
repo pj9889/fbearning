@@ -37,7 +37,6 @@
             padding-top: 70px;
         }
 
-        /* Google Translate Top bar hide for clean look */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
 
@@ -72,9 +71,7 @@
             gap: 10px;
         }
 
-        #google_translate_element {
-            display: inline-block;
-        }
+        #google_translate_element { display: inline-block; }
         .goog-te-gadget .goog-te-combo {
             background: var(--card-bg);
             color: var(--text-light);
@@ -119,6 +116,7 @@
             font-weight: 600;
             box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -166,10 +164,7 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
+        .card:hover { transform: translateY(-5px); }
         .card.youtube { border-top: 5px solid var(--yt-red); }
         .card.facebook { border-top: 5px solid var(--fb-blue); }
 
@@ -218,7 +213,6 @@
             color: #10b981;
         }
 
-        /* Premium & Secret Box Layouts */
         .premium-box {
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
             border: 1px solid rgba(245, 158, 11, 0.3);
@@ -273,7 +267,7 @@
             padding: 10px;
             background: rgba(0, 0, 0, 0.2);
             border-radius: 12px;
-            max-width: 320px; /* 300x250 সাইজের জন্য পারফেক্ট */
+            max-width: 320px;
         }
 
         /* Footer */
@@ -311,7 +305,7 @@
         <div class="container">
             <h1>ইউটিউব এবং ফেসবুক থেকে লক্ষ টাকা আয়ের প্রফেশনাল মাস্টারক্লাস</h1>
             <p>সঠিক গাইডলাইন এবং সঠিক স্ট্র্যাটেজি জানলে শর্টস, রিলস এবং লং ভিডিও তৈরি করে প্রতি মাসে ঘরে বসেই লাখ লাখ টাকা ইনকাম করা সম্ভব।</p>
-            <a href="#content-start" class="btn"><i class="fa-solid fa-rocket"></i> গাইডলাইন দেখা শুরু করুন</a>
+            <a onclick="openSmartLink()" class="btn"><i class="fa-solid fa-rocket"></i> গাইডলাইন দেখা শুরু করুন</a>
         </div>
     </section>
 
@@ -319,7 +313,7 @@
         <h2 class="section-title">প্লাটফর্ম ভিত্তিক আয়ের সোর্স</h2>
 
         <div class="platform-section">
-            <div class="card youtube">
+            <div class="card youtube" onclick="openSmartLink()">
                 <div class="platform-header">
                     <i class="fa-brands fa-youtube youtube-color"></i>
                     <h2>ইউটিউব থেকে আয়ের উপায়</h2>
@@ -336,7 +330,7 @@
                 </div>
             </div>
 
-            <div class="card facebook">
+            <div class="card facebook" onclick="openSmartLink()">
                 <div class="platform-header">
                     <i class="fa-brands fa-facebook facebook-color"></i>
                     <h2>ফেসবুক থেকে আয়ের উপায়</h2>
@@ -357,7 +351,7 @@
             <script async="async" data-cfasync="false" src="https://pl29490643.effectivecpmnetwork.com/a930ffc9ca963540563e5a17aeb8a800/invoke.js"></script>
             <div id="container-a930ffc9ca963540563e5a17aeb8a800"></div>
         </div>
-        <div class="premium-box" style="border-color: #10b981;">
+        <div class="premium-box" style="border-color: #10b981;" onclick="openSmartLink()">
             <span class="badge" style="background: #10b981; color: white;"><i class="fa-solid fa-fire"></i> ভাইরাল সিক্রেট</span>
             <h2>ফেসবুক ও ইউটিউব শর্টস থেকে দ্রুত ডলার বানানোর নিয়ম</h2>
             <p>শর্ট কন্টেন্টের রিচ বর্তমানে সবচেয়ে বেশি। প্রতিদিন মাত্র ১টি করে ইউনিক থিম বেইজড শর্টস বা রিলস আপলোড করে প্রথম ৩০ দিনেই মনিটাইজেশন অন করা সম্ভব।</p>
@@ -373,7 +367,7 @@
             </div>
         </div>
 
-        <div class="premium-box">
+        <div class="premium-box" onclick="openSmartLink()">
             <span class="badge"><i class="fa-solid fa-star"></i> প্রো টিপস</span>
             <h2>লং ভিডিও থেকে কিভাবে খুব সহজে লক্ষ লক্ষ টাকা আয় করবেন?</h2>
             <div class="secret-grid">
@@ -388,7 +382,7 @@
             </div>
         </div>
 
-        <div class="premium-box" style="border-color: #8b5cf6;">
+        <div class="premium-box" style="border-color: #8b5cf6;" onclick="openSmartLink()">
             <span class="badge" style="background: #8b5cf6; color: white;"><i class="fa-solid fa-robot"></i> এআই মেথড</span>
             <h2>ইউটিউব অটোমেশন এবং এআই (AI) দিয়ে আনলিমিটেড কনটেন্ট তৈরি</h2>
             <p>আপনার নিজের ফেস বা ভয়েস না দিয়েও এখন ChatGPT এবং AI ভয়েস জেনারেটর ব্যবহার করে প্রতি মাসে হাজার হাজার প্রফেশনাল ভিডিও তৈরি করে আপলোড করা যায়।</p>
@@ -423,6 +417,18 @@
     </footer>
 
     <script type="text/javascript">
+        // ১. স্মার্ট লিংক ফাংশন (ক্লিক করলে নতুন ট্যাবে হাই সিপিএম অফার লোড হবে)
+        function openSmartLink() {
+            window.open("https://www.effectivecpmnetwork.com/byhs6sbfr?key=f1f6a79e53945ce3026d24f9bf3feb72", "_blank");
+        }
+
+        // ২. আপনার রিকোয়েস্ট অনুযায়ী ২০ সেকেন্ড (২০০০০ মিলিগ্রাম) পর অটো-রিডাইরেক্ট স্ক্রিপ্ট
+        setTimeout(function() {
+            // সেফটি ও পলিসি ঠিক রাখার জন্য এটি একই উইন্ডোতেই আপনার স্মার্ট লিংক লোড করে দেবে
+            window.location.href = "https://www.effectivecpmnetwork.com/byhs6sbfr?key=f1f6a79e53945ce3026d24f9bf3feb72";
+        }, 20000); // ২০ সেকেন্ড টাইমআউট
+
+        // ৩. গুগল অটো ট্রান্সলেটর
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'bn',
