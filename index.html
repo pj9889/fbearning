@@ -32,8 +32,12 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.8;
-            padding-top: 70px; /* Prevent content overlap from fixed header */
+            padding-top: 70px;
         }
+
+        /* Google Translate Top bar hide for clean look */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
 
         /* Header & Navigation */
         header {
@@ -66,15 +70,9 @@
             gap: 10px;
         }
 
-        /* Google Translate Widget Styling */
+        /* Hide Translate Widget visually if you want it purely automatic */
         #google_translate_element {
             display: inline-block;
-        }
-        
-        /* Customizing Translate Dropdown for Professional Look */
-        .goog-te-gadget {
-            font-family: 'Hind Siliguri', sans-serif !important;
-            color: transparent !important;
         }
         .goog-te-gadget .goog-te-combo {
             background: var(--card-bg);
@@ -83,11 +81,10 @@
             padding: 6px 10px;
             border-radius: 8px;
             outline: none;
-            cursor: pointer;
             font-size: 14px;
         }
 
-        /* Hero Section with Premium Background Effect */
+        /* Hero Section */
         .hero {
             padding: 80px 20px 60px;
             text-align: center;
@@ -151,7 +148,7 @@
             border-radius: 2px;
         }
 
-        /* Platform Grid Design (Responsive) */
+        /* Platform Grid Design */
         .platform-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -170,7 +167,6 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
         .card.youtube { border-top: 5px solid var(--yt-red); }
@@ -183,24 +179,16 @@
             margin-bottom: 25px;
         }
 
-        .platform-header i {
-            font-size: 35px;
-        }
-
+        .platform-header i { font-size: 35px; }
         .youtube-color { color: var(--yt-red); }
         .facebook-color { color: var(--fb-blue); }
+        .card h2 { font-size: 24px; }
 
-        .card h2 {
-            font-size: 24px;
-        }
-
-        /* Detail List Styling */
         .income-source {
             margin-top: 25px;
             background: rgba(255,255,255,0.02);
             padding: 20px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .income-source h3 {
@@ -212,10 +200,7 @@
             gap: 10px;
         }
 
-        .strategy-list {
-            list-style: none;
-        }
-
+        .strategy-list { list-style: none; }
         .strategy-list li {
             margin-bottom: 15px;
             padding-left: 25px;
@@ -238,7 +223,6 @@
             border: 1px solid rgba(245, 158, 11, 0.3);
             border-radius: 20px;
             padding: 35px;
-            margin-top: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -275,40 +259,28 @@
             margin-top: 60px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #64748b;
-            font-size: 15px;
         }
 
-        /* --- MOBILE OPTIMIZATION (Responsive Media Queries) --- */
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
             body { padding-top: 65px; }
             .nav-container { padding: 12px 15px; }
             .logo { font-size: 19px; }
-            
-            .hero { padding: 50px 15px 40px; }
             .hero h1 { font-size: 28px; }
-            .hero p { font-size: 15px; }
-            .btn { width: 100%; text-align: center; padding: 12px 20px; }
-            
+            .btn { width: 100%; text-align: center; }
             .section-title { font-size: 24px; }
-            .card { padding: 20px; border-radius: 16px; }
-            .card h2 { font-size: 20px; }
-            .income-source { padding: 15px; }
-            .income-source h3 { font-size: 16px; }
-            
-            .premium-box { padding: 20px; border-radius: 16px; }
-            .premium-box h2 { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
+    <!-- Header -->
     <header>
         <div class="nav-container">
             <div class="logo">
                 <i class="fa-solid fa-wallet"></i> Earn Master
             </div>
-            <!-- Auto Translate Element Dropdown -->
+            <!-- Google Translate Dropdown Container -->
             <div id="google_translate_element"></div>
         </div>
     </header>
@@ -317,19 +289,17 @@
     <section class="hero">
         <div class="container">
             <h1>ইউটিউব এবং ফেসবুক থেকে লক্ষ টাকা আয়ের প্রফেশনাল মাস্টারক্লাস</h1>
-            <p>সঠিক গাইডলাইন এবং সঠিক স্ট্র্যাটেজি জানলে শর্টস, রিলস এবং লং ভিডিও তৈরি করে প্রতি মাসে ঘরে বসেই লাখ লাখ টাকা ইনকাম করা সম্ভব। নিজেকে ডিজিটাল উদ্যোক্তা হিসেবে গড়ে তুলুন।</p>
+            <p>সঠিক গাইডলাইন এবং সঠিক স্ট্র্যাটেজি জানলে শর্টস, রিলস এবং লং ভিডিও তৈরি করে প্রতি মাসে ঘরে বসেই লাখ লাখ টাকা ইনকাম করা সম্ভব।</p>
             <a href="#content-start" class="btn"><i class="fa-solid fa-rocket"></i> গাইডলাইন দেখা শুরু করুন</a>
         </div>
     </section>
 
-    <!-- Main Content Section -->
+    <!-- Main Content -->
     <main class="container" id="content-start">
-        
         <h2 class="section-title">প্লাটফর্ম ভিত্তিক আয়ের সোর্স</h2>
 
         <div class="platform-section">
-            
-            <!-- YouTube Guide Card -->
+            <!-- YouTube Card -->
             <div class="card youtube">
                 <div class="platform-header">
                     <i class="fa-brands fa-youtube youtube-color"></i>
@@ -338,70 +308,48 @@
                 <p>ইউটিউব বর্তমান বিশ্বের সবচেয়ে বড় ভিডিও শেয়ারিং প্ল্যাটফর্ম। এখানে প্রফেশনাল কন্টেন্ট ক্রিয়েট করে লাইফটাইম প্যাসিভ ইনকাম করা সম্ভব।</p>
                 
                 <div class="income-source">
-                    <h3><i class="fa-solid fa-money-bill-wave"></i> লং ভিডিও থেকে ইনকাম (লক্ষ টাকার মিশন)</h3>
+                    <h3><i class="fa-solid fa-money-bill-wave"></i> লং ভিডিও থেকে ইনকাম</h3>
                     <ul class="strategy-list">
-                        <li><strong>Google AdSense:</strong> ভিডিওর ডেসক্রিপশনে এবং মাঝে বিজ্ঞাপন দেখিয়ে সবচেয়ে বেশি আয় করা যায়।</li>
-                        <li><strong>Affiliate Marketing:</strong> বিভিন্ন প্রোডাক্টের লিংক শেয়ার করে কমিশন আর্ন করুন।</li>
-                        <li><strong>Sponsorship:</strong> আপনার চ্যানেলে ভিউ ভালো হলে ব্র্যান্ডগুলো স্পন্সরশিপ দেবে।</li>
-                    </ul>
-                </div>
-
-                <div class="income-source">
-                    <h3><i class="fa-solid fa-bolt"></i> ইউটিউব শর্টস (Shorts) থেকে ইনকাম</h3>
-                    <ul class="strategy-list">
-                        <li>শর্টস ফিড বিজ্ঞপ্তির মাধ্যমে খুব দ্রুত চ্যানেল গ্রো করে বোনাস আর্ন করা যায়।</li>
+                        <li><strong>Google AdSense:</strong> ভিডিওর মাঝে বিজ্ঞাপন দেখিয়ে সবচেয়ে বেশি আয় করা যায়।</li>
+                        <li><strong>Affiliate Marketing:</strong> ডেসক্রিপশনে প্রোডাক্ট লিংক শেয়ার করে কমিশন আর্ন করুন।</li>
+                        <li><strong>Sponsorship:</strong> ভিউ ভালো হলে ব্র্যান্ডগুলো বড় স্পন্সরশিপ দেবে।</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Facebook Guide Card -->
+            <!-- Facebook Card -->
             <div class="card facebook">
                 <div class="platform-header">
                     <i class="fa-brands fa-facebook facebook-color"></i>
                     <h2>ফেসবুক থেকে আয়ের উপায়</h2>
                 </div>
-                <p>ফেসবুক এখন শুধু যোগাযোগের মাধ্যম নয়, এটি বর্তমান সময়ে ভিডিও কন্টেন্ট থেকে টাকা ইনকাম করার অন্যতম সেরা এবং সহজ মাধ্যম।</p>
+                <p>ফেসবুক বর্তমান সময়ে ভিডিও কন্টেন্ট থেকে টাকা ইনকাম করার অন্যতম সেরা এবং সহজ মাধ্যম।</p>
                 
                 <div class="income-source">
                     <h3><i class="fa-solid fa-money-bill-wave"></i> লং ভিডিও ও ইন-স্ট্রিম অ্যাডস</h3>
                     <ul class="strategy-list">
                         <li><strong>In-Stream Ads:</strong> বড় ভিডিওতে ফেসবুক নিজে থেকেই অ্যাড বসায়, যেখান থেকে বিশাল রেভিনিউ আসে।</li>
-                        <li><strong>Fan Subscriptions:</strong> আপনার লয়াল অডিয়েন্সদের এক্সক্লুসিভ কন্টেন্ট দিয়ে প্রতি মাসে ফিক্সড ফি নিতে পারেন।</li>
-                    </ul>
-                </div>
-
-                <div class="income-source">
-                    <h3><i class="fa-solid fa-bolt"></i> ফেসবুক রিলস (Reels) থেকে ইনকাম</h3>
-                    <ul class="strategy-list">
-                        <li><strong>Ads on Reels:</strong> ছোট রিলস ভিডিও আপলোড করে ফেসবুক বোনাস ও রিলস অ্যাড থেকে দ্রুত আয় করা যায়।</li>
+                        <li><strong>Ads on Reels:</strong> ছোট রিলস ভিডিও আপলোড করে ফেসবুক বোনাস থেকে দ্রুত আয় করা যায়।</li>
                     </ul>
                 </div>
             </div>
-
         </div>
 
-        <!-- Super Fast Success Secret Section -->
+        <!-- Super Strategy Section -->
         <div class="premium-box">
             <span class="badge"><i class="fa-solid fa-star"></i> প্রো টিপস</span>
             <h2>লং ভিডিও থেকে কিভাবে খুব সহজে লক্ষ লক্ষ টাকা আয় করবেন?</h2>
-            <p style="margin-bottom: 10px; color: #cbd5e1;">লং ভিডিও থেকে হাই রেভিনিউ জেনারেট করার জন্য আপনাকে এই ৩টি মূল মন্ত্র মেনে চলতে হবে:</p>
-            
             <div class="secret-grid">
                 <div class="secret-card">
-                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;"><i class="fa-solid fa-target-laser"></i> ১. হাই-সিপিএম নিশ (Niche)</h4>
-                    <p style="font-size: 14px; color: #94a3b8;">টেকনোলজি, ফাইন্যান্স, বা বিজনেস রিলেটেড ভিডিও বানান। এসব টপিকে বিজ্ঞাপনের রেট (CPM) অনেক বেশি থাকে।</p>
+                    <h4 style="color: var(--accent-gold); margin-bottom: 5px;"><i class="fa-solid fa-target-laser"></i> ১. হাই-সিপিএম নিশ</h4>
+                    <p style="font-size: 14px; color: #94a3b8;">টেকনোলজি, ফাইন্যান্স, বা বিজনেস রিলেটেড ভিডিও বানান। আয়ের রেট বেশি পাবেন।</p>
                 </div>
                 <div class="secret-card">
-                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;"><i class="fa-solid fa-clock"></i> ২. ভিডিওর দৈর্ঘ্য (৮+ মিনিট)</h4>
-                    <p style="font-size: 14px; color: #94a3b8;">ভিডিওর লেন্থ অন্তত ৮ মিনিটের বেশি রাখুন। এতে ভিডিওর মাঝে একাধিক 'মিড-রোল' অ্যাড বসিয়ে আয় দ্বিগুণ করা যায়।</p>
-                </div>
-                <div class="secret-card">
-                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;"><i class="fa-solid fa-eye"></i> ৩. ক্যাচি থাম্বনেইল ও SEO</h4>
-                    <p style="font-size: 14px; color: #94a3b8;">ভিডিওর থাম্বনেইল আকর্ষণীয় করুন এবং টাইটেলে প্রফেশনাল কি-ওয়ার্ড ব্যবহার করুন যাতে সার্চ থেকে লাইফটাইম ভিউ আসে।</p>
+                    <h4 style="color: var(--accent-gold); margin-bottom: 5px;"><i class="fa-solid fa-clock"></i> ২. ভিডিওর দৈর্ঘ্য (৮+ মিনিট)</h4>
+                    <p style="font-size: 14px; color: #94a3b8;">ভিডিওর লেন্থ অন্তত ৮ মিনিটের বেশি রাখুন। একাধিক 'মিড-রোল' অ্যাড বসিয়ে আয় দ্বিগুণ করা যায়।</p>
                 </div>
             </div>
         </div>
-
     </main>
 
     <!-- Footer -->
@@ -409,14 +357,30 @@
         <p>&copy; 2026 Earn Master. সর্বস্বত্ব সংরক্ষিত। প্রফেশনাল আর্নিং গাইডলাইন।</p>
     </footer>
 
-    <!-- Google Translate Script (Superfast & Secure Async) -->
+    <!-- INTELLIGENT AUTO TRANSLATE JAVASCRIPT -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'bn', 
-                includedLanguages: 'en,bn,hi,ar,es', // আপনি যে ভাষাগুলো রাখতে চান
+                pageLanguage: 'bn',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
+
+            // স্মার্ট অটো-ডিটেকশন কোড
+            setTimeout(function() {
+                // ভিজিটরের ব্রাউজার ল্যাঙ্গুয়েজ চেক করা (যেমন: "en", "hi", "ar")
+                var userLang = navigator.language || navigator.userLanguage; 
+                userLang = userLang.substring(0, 2); // শুধুমাত্র মেইন কোডটা নেওয়া (যেমন en-US থেকে en)
+
+                // যদি ভিজিটরের ভাষা বাংলা না হয়, তবে অটো-ট্রান্সলেট ট্রিগার করবে
+                if (userLang !== 'bn') {
+                    var selectEl = document.querySelector('.goog-te-combo');
+                    if (selectEl) {
+                        selectEl.value = userLang;
+                        // ইভেন্ট ফায়ার করে চেঞ্জ করা যাতে গুগল স্ক্রিপ্ট কাজ শুরু করে
+                        selectEl.dispatchEvent(new Event('change'));
+                    }
+                }
+            }, 1000); // ১ সেকেন্ড লোডিং টাইম দেওয়া হলো যাতে স্ক্রিপ্ট রেডি হতে পারে
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
