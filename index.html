@@ -32,17 +32,20 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             line-height: 1.8;
+            padding-top: 70px; /* Prevent content overlap from fixed header */
         }
 
         /* Header & Navigation */
         header {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             position: fixed;
             width: 100%;
             top: 0;
+            left: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .nav-container {
@@ -55,7 +58,7 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: var(--accent-gold);
             display: flex;
@@ -63,34 +66,38 @@
             gap: 10px;
         }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
+        /* Google Translate Widget Styling */
+        #google_translate_element {
+            display: inline-block;
         }
-
-        nav ul li a {
+        
+        /* Customizing Translate Dropdown for Professional Look */
+        .goog-te-gadget {
+            font-family: 'Hind Siliguri', sans-serif !important;
+            color: transparent !important;
+        }
+        .goog-te-gadget .goog-te-combo {
+            background: var(--card-bg);
             color: var(--text-light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-gold);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 6px 10px;
+            border-radius: 8px;
+            outline: none;
+            cursor: pointer;
+            font-size: 14px;
         }
 
         /* Hero Section with Premium Background Effect */
         .hero {
-            padding: 180px 20px 100px;
+            padding: 80px 20px 60px;
             text-align: center;
-            background: radial-gradient(circle at top, rgba(24, 119, 242, 0.15), rgba(255, 0, 0, 0.15), transparent 60%);
-            position: relative;
+            background: radial-gradient(circle at top, rgba(24, 119, 242, 0.15), rgba(255, 0, 0, 0.15), transparent 70%);
         }
 
         .hero h1 {
-            font-size: 45px;
+            font-size: 40px;
             font-weight: 700;
+            line-height: 1.4;
             margin-bottom: 20px;
             background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
@@ -98,7 +105,7 @@
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
             max-width: 700px;
             margin: 0 auto 30px;
             color: #94a3b8;
@@ -106,7 +113,7 @@
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 35px;
             background: linear-gradient(45deg, var(--yt-red), var(--fb-blue));
             color: white;
             text-decoration: none;
@@ -125,14 +132,13 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 32px;
-            margin-bottom: 50px;
-            position: relative;
+            font-size: 30px;
+            margin-bottom: 40px;
         }
 
         .section-title::after {
@@ -145,29 +151,26 @@
             border-radius: 2px;
         }
 
-        /* Platform Grid Design */
+        /* Platform Grid Design (Responsive) */
         .platform-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        @media (max-width: 768px) {
-            .platform-section { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 32px; }
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .card {
             background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 40px;
+            border-radius: 20px;
+            padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
         .card.youtube { border-top: 5px solid var(--yt-red); }
@@ -181,23 +184,27 @@
         }
 
         .platform-header i {
-            font-size: 40px;
+            font-size: 35px;
         }
 
         .youtube-color { color: var(--yt-red); }
         .facebook-color { color: var(--fb-blue); }
 
         .card h2 {
-            font-size: 26px;
+            font-size: 24px;
         }
 
         /* Detail List Styling */
         .income-source {
             margin-top: 25px;
+            background: rgba(255,255,255,0.02);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
         }
 
         .income-source h3 {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--accent-gold);
             margin-bottom: 15px;
             display: flex;
@@ -213,11 +220,12 @@
             margin-bottom: 15px;
             padding-left: 25px;
             position: relative;
+            font-size: 15px;
         }
 
         .strategy-list li::before {
             content: "\f00c";
-            font-family: "Font Awesome 5 Free";
+            font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
             left: 0;
@@ -229,8 +237,8 @@
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
             border: 1px solid rgba(245, 158, 11, 0.3);
             border-radius: 20px;
-            padding: 40px;
-            margin-top: 60px;
+            padding: 35px;
+            margin-top: 40px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -240,19 +248,55 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             display: inline-block;
             margin-bottom: 15px;
+        }
+
+        .secret-grid {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .secret-card {
+            background: rgba(255,255,255,0.02); 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         /* Footer */
         footer {
             background-color: #090d16;
             text-align: center;
-            padding: 30px;
-            margin-top: 80px;
+            padding: 25px;
+            margin-top: 60px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: #64748b;
+            font-size: 15px;
+        }
+
+        /* --- MOBILE OPTIMIZATION (Responsive Media Queries) --- */
+        @media (max-width: 768px) {
+            body { padding-top: 65px; }
+            .nav-container { padding: 12px 15px; }
+            .logo { font-size: 19px; }
+            
+            .hero { padding: 50px 15px 40px; }
+            .hero h1 { font-size: 28px; }
+            .hero p { font-size: 15px; }
+            .btn { width: 100%; text-align: center; padding: 12px 20px; }
+            
+            .section-title { font-size: 24px; }
+            .card { padding: 20px; border-radius: 16px; }
+            .card h2 { font-size: 20px; }
+            .income-source { padding: 15px; }
+            .income-source h3 { font-size: 16px; }
+            
+            .premium-box { padding: 20px; border-radius: 16px; }
+            .premium-box h2 { font-size: 22px; }
         }
     </style>
 </head>
@@ -264,35 +308,29 @@
             <div class="logo">
                 <i class="fa-solid fa-wallet"></i> Earn Master
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">হোম</a></li>
-                    <li><a href="#youtube">ইউটিউব গাইড</a></li>
-                    <li><a href="#facebook">ফেসবুক গাইড</a></li>
-                    <li><a href="#secret">সিক্রেট টিপস</a></li>
-                </ul>
-            </nav>
+            <!-- Auto Translate Element Dropdown -->
+            <div id="google_translate_element"></div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container">
             <h1>ইউটিউব এবং ফেসবুক থেকে লক্ষ টাকা আয়ের প্রফেশনাল মাস্টারক্লাস</h1>
             <p>সঠিক গাইডলাইন এবং সঠিক স্ট্র্যাটেজি জানলে শর্টস, রিলস এবং লং ভিডিও তৈরি করে প্রতি মাসে ঘরে বসেই লাখ লাখ টাকা ইনকাম করা সম্ভব। নিজেকে ডিজিটাল উদ্যোক্তা হিসেবে গড়ে তুলুন।</p>
-            <a href="#youtube" class="btn"><i class="fa-solid fa-rocket"></i> গাইডলাইন দেখা শুরু করুন</a>
+            <a href="#content-start" class="btn"><i class="fa-solid fa-rocket"></i> গাইডলাইন দেখা শুরু করুন</a>
         </div>
     </section>
 
     <!-- Main Content Section -->
-    <main class="container">
+    <main class="container" id="content-start">
         
-        <h2 class="section-title">প্লাটফর্ম ভিত্তিক আর্নিং সোর্স</h2>
+        <h2 class="section-title">প্লাটফর্ম ভিত্তিক আয়ের সোর্স</h2>
 
         <div class="platform-section">
             
             <!-- YouTube Guide Card -->
-            <div class="card youtube" id="youtube">
+            <div class="card youtube">
                 <div class="platform-header">
                     <i class="fa-brands fa-youtube youtube-color"></i>
                     <h2>ইউটিউব থেকে আয়ের উপায়</h2>
@@ -302,40 +340,40 @@
                 <div class="income-source">
                     <h3><i class="fa-solid fa-money-bill-wave"></i> লং ভিডিও থেকে ইনকাম (লক্ষ টাকার মিশন)</h3>
                     <ul class="strategy-list">
-                        <li><strong>Google AdSense:</strong> ভিডিওর শুরুতে, মাঝে এবং শেষে বিজ্ঞাপন দেখিয়ে সবচেয়ে বেশি আয় করা যায়।</li>
-                        <li><strong>Affiliate Marketing:</strong> ভিডিওর ডেসক্রিপশনে বিভিন্ন প্রোডাক্টের লিংক শেয়ার করে কমিশন আর্ন করুন।</li>
-                        <li><strong>Sponsorship:</strong> আপনার চ্যানেলে ভিউ ভালো হলে বিভিন্ন ব্র্যান্ড আপনাকে তাদের প্রচারের জন্য স্পন্সর করবে।</li>
+                        <li><strong>Google AdSense:</strong> ভিডিওর ডেসক্রিপশনে এবং মাঝে বিজ্ঞাপন দেখিয়ে সবচেয়ে বেশি আয় করা যায়।</li>
+                        <li><strong>Affiliate Marketing:</strong> বিভিন্ন প্রোডাক্টের লিংক শেয়ার করে কমিশন আর্ন করুন।</li>
+                        <li><strong>Sponsorship:</strong> আপনার চ্যানেলে ভিউ ভালো হলে ব্র্যান্ডগুলো স্পন্সরশিপ দেবে।</li>
                     </ul>
                 </div>
 
                 <div class="income-source">
                     <h3><i class="fa-solid fa-bolt"></i> ইউটিউব শর্টস (Shorts) থেকে ইনকাম</h3>
                     <ul class="strategy-list">
-                        <li>ইউটিউব শর্টস ফান্ড এবং শর্টস ফিড বিজ্ঞপ্তির মাধ্যমে খুব দ্রুত চ্যানেল গ্রো করে আয় করা যায়।</li>
+                        <li>শর্টস ফিড বিজ্ঞপ্তির মাধ্যমে খুব দ্রুত চ্যানেল গ্রো করে বোনাস আর্ন করা যায়।</li>
                     </ul>
                 </div>
             </div>
 
             <!-- Facebook Guide Card -->
-            <div class="card facebook" id="facebook">
+            <div class="card facebook">
                 <div class="platform-header">
                     <i class="fa-brands fa-facebook facebook-color"></i>
                     <h2>ফেসবুক থেকে আয়ের উপায়</h2>
                 </div>
-                <p>ফেসবুকে এখন শুধু যোগাযোগের মাধ্যম নয়, এটি বর্তমান সময়ে ভিডিও কন্টেন্ট থেকে টাকা ইনকাম করার অন্যতম সেরা এবং সহজ মাধ্যম।</p>
+                <p>ফেসবুক এখন শুধু যোগাযোগের মাধ্যম নয়, এটি বর্তমান সময়ে ভিডিও কন্টেন্ট থেকে টাকা ইনকাম করার অন্যতম সেরা এবং সহজ মাধ্যম।</p>
                 
                 <div class="income-source">
                     <h3><i class="fa-solid fa-money-bill-wave"></i> লং ভিডিও ও ইন-স্ট্রিম অ্যাডস</h3>
                     <ul class="strategy-list">
-                        <li><strong>In-Stream Ads:</strong> ৫ মিনিটের বেশি লং ভিডিওতে ফেসবুক নিজে থেকেই অ্যাড বসায়, যেখান থেকে বড় অংকের রেভিনিউ আসে।</li>
-                        <li><strong>Fan Subscriptions:</strong> আপনার লয়াল অডিয়েন্সদের জন্য এক্সক্লুসিভ কন্টেন্ট বানিয়ে প্রতি মাসে সাবস্ক্রিপশন ফি নিতে পারেন।</li>
+                        <li><strong>In-Stream Ads:</strong> বড় ভিডিওতে ফেসবুক নিজে থেকেই অ্যাড বসায়, যেখান থেকে বিশাল রেভিনিউ আসে।</li>
+                        <li><strong>Fan Subscriptions:</strong> আপনার লয়াল অডিয়েন্সদের এক্সক্লুসিভ কন্টেন্ট দিয়ে প্রতি মাসে ফিক্সড ফি নিতে পারেন।</li>
                     </ul>
                 </div>
 
                 <div class="income-source">
                     <h3><i class="fa-solid fa-bolt"></i> ফেসবুক রিলস (Reels) থেকে ইনকাম</h3>
                     <ul class="strategy-list">
-                        <li><strong>Ads on Reels:</strong> ছোট ছোট আকর্ষনীয় রিলস ভিডিও আপলোড করে ফেসবুক বোনাস এবং রিলস অ্যাড থেকে দ্রুত আয় করা যায়।</li>
+                        <li><strong>Ads on Reels:</strong> ছোট রিলস ভিডিও আপলোড করে ফেসবুক বোনাস ও রিলস অ্যাড থেকে দ্রুত আয় করা যায়।</li>
                     </ul>
                 </div>
             </div>
@@ -343,23 +381,23 @@
         </div>
 
         <!-- Super Fast Success Secret Section -->
-        <div class="premium-box" id="secret">
+        <div class="premium-box">
             <span class="badge"><i class="fa-solid fa-star"></i> প্রো টিপস</span>
             <h2>লং ভিডিও থেকে কিভাবে খুব সহজে লক্ষ লক্ষ টাকা আয় করবেন?</h2>
-            <p style="margin-bottom: 20px; color: #cbd5e1;">লং ভিডিও থেকে হাই রেভিনিউ জেনারেট করার জন্য আপনাকে একটি নির্দিষ্ট নিয়মে কাজ করতে হবে। নিচে তার ৩টি মূল মন্ত্র দেওয়া হলো:</p>
+            <p style="margin-bottom: 10px; color: #cbd5e1;">লং ভিডিও থেকে হাই রেভিনিউ জেনারেট করার জন্য আপনাকে এই ৩টি মূল মন্ত্র মেনে চলতে হবে:</p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+            <div class="secret-grid">
+                <div class="secret-card">
                     <h4 style="color: var(--accent-gold); margin-bottom: 10px;"><i class="fa-solid fa-target-laser"></i> ১. হাই-সিপিএম নিশ (Niche)</h4>
-                    <p style="font-size: 14px; color: #94a3b8;">টেকনোলজি, ফাইন্যান্স, ফ্রিল্যান্সিং বা বিজনেস রিলেটেড লং ভিডিও বানান। এসব টপিকে বিজ্ঞাপনের রেট বা CPM অনেক বেশি থাকে।</p>
+                    <p style="font-size: 14px; color: #94a3b8;">টেকনোলজি, ফাইন্যান্স, বা বিজনেস রিলেটেড ভিডিও বানান। এসব টপিকে বিজ্ঞাপনের রেট (CPM) অনেক বেশি থাকে।</p>
                 </div>
-                <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+                <div class="secret-card">
                     <h4 style="color: var(--accent-gold); margin-bottom: 10px;"><i class="fa-solid fa-clock"></i> ২. ভিডিওর দৈর্ঘ্য (৮+ মিনিট)</h4>
-                    <p style="font-size: 14px; color: #94a3b8;">ভিডিওর লেন্থ অন্তত ৮ মিনিটের বেশি রাখুন। এতে ভিডিওর মাঝে একাধিক 'মিড-রোল' অ্যাড বসানো যায়, যা আয় দ্বিগুণ করে দেয়।</p>
+                    <p style="font-size: 14px; color: #94a3b8;">ভিডিওর লেন্থ অন্তত ৮ মিনিটের বেশি রাখুন। এতে ভিডিওর মাঝে একাধিক 'মিড-রোল' অ্যাড বসিয়ে আয় দ্বিগুণ করা যায়।</p>
                 </div>
-                <div style="background: rgba(255,255,255,0.02); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
-                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;"><i class="fa-solid fa-eye"></i> ৩. ক্লিকযোগ্য থাম্বনেইল ও SEO</h4>
-                    <p style="font-size: 14px; color: #94a3b8;">ভিডিওর থাম্বনেইল করুন ক্যাচি এবং টাইটেলে প্রফেশনাল কি-ওয়ার্ড ব্যবহার করুন যাতে সার্চ থেকে সারাজীবন ভিউ এবং ইনকাম আসতে থাকে।</p>
+                <div class="secret-card">
+                    <h4 style="color: var(--accent-gold); margin-bottom: 10px;"><i class="fa-solid fa-eye"></i> ৩. ক্যাচি থাম্বনেইল ও SEO</h4>
+                    <p style="font-size: 14px; color: #94a3b8;">ভিডিওর থাম্বনেইল আকর্ষণীয় করুন এবং টাইটেলে প্রফেশনাল কি-ওয়ার্ড ব্যবহার করুন যাতে সার্চ থেকে লাইফটাইম ভিউ আসে।</p>
                 </div>
             </div>
         </div>
@@ -370,6 +408,18 @@
     <footer>
         <p>&copy; 2026 Earn Master. সর্বস্বত্ব সংরক্ষিত। প্রফেশনাল আর্নিং গাইডলাইন।</p>
     </footer>
+
+    <!-- Google Translate Script (Superfast & Secure Async) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'bn', 
+                includedLanguages: 'en,bn,hi,ar,es', // আপনি যে ভাষাগুলো রাখতে চান
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
 </body>
 </html>
