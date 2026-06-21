@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Connecting...</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #111;
+            background-color: #0b0b0b;
             color: #fff;
             display: flex;
             justify-content: center;
@@ -29,10 +29,10 @@
             max-width: 450px;
             height: 100vh;
             background-color: #000;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            box-shadow: 0 0 30px rgba(0,0,0,0.9);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
             padding: 20px;
             text-align: center;
@@ -56,18 +56,18 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.2s ease-in-out;
         }
 
         .slider-bg img.active {
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
-        /* উপরের লোগো (ডান থেকে বাম পর্যন্ত প্রায় পুরো ডিসপ্লে জুড়ে বড় করা হয়েছে) */
+        /* উপরের লোগো (ডান থেকে বাম পর্যন্ত বড়) */
         .logo-area {
             position: relative;
             z-index: 2;
-            margin-top: 25px;
+            margin-top: 30px;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -75,74 +75,60 @@
         }
 
         .logo-area img {
-            width: 85%;       /* ডিসপ্লের ডান থেকে বামের ৮৫% জায়গা জুড়ে থাকবে */
-            max-width: 380px; /* সর্বোচ্চ চওড়ার সীমা বাড়িয়ে দেওয়া হলো */
-            height: auto;     /* হাইট অটোমেটিক অ্যাডজাস্ট হবে */
+            width: 85%;
+            max-width: 380px;
+            height: auto;
             object-fit: contain;
         }
 
-        /* লেখার অংশ এবং বাটন */
-        .content-area {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            margin-bottom: 40px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 25px 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
+        /* স্টাইলিশ রিডাইরেক্ট বক্স (৩ সেকেন্ড পর আসবে) */
+        .redirect-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            z-index: 3;
+            width: 85%;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 2px solid #ff3366;
+            box-shadow: 0 0 25px rgba(255, 51, 102, 0.5);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .step-text {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            font-weight: 500;
+        .redirect-box.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
         }
 
-        /* স্টেপ ম্যানেজমেন্ট */
-        .step {
-            display: none;
-        }
-
-        .step.active {
-            display: block;
-        }
-
-        /* কমন বাটন স্টাইল */
-        .btn {
-            display: inline-block;
-            width: 100%;
-            padding: 15px;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            text-decoration: none;
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        /* বিভিন্ন বাটনের আলাদা কালার */
-        .btn-next-1 {
-            background-color: #ff3366;
+        .redirect-box h2 {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 20px;
             color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
-        .btn-next-2 {
-            background-color: #33ccff;
-            color: #000;
+        /* আকর্ষণীয় অ্যানিমেটেড কাউন্টডাউন নাম্বার */
+        .countdown-number {
+            font-size: 65px;
+            font-weight: 800;
+            color: #ff3366;
+            text-shadow: 0 0 20px rgba(255, 51, 102, 0.8);
+            margin-top: 10px;
+            display: inline-block;
+            animation: pulse 1s infinite alternate;
         }
 
-        .btn-complete {
-            background-color: #00ff66;
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
     </style>
 </head>
@@ -151,41 +137,26 @@
     <div class="container">
         <!-- ব্যাকগ্রাউন্ড ইমেজ স্লাইডার -->
         <div class="slider-bg">
-            <img src="jk1.webp" class="active" alt="Background 1">
-            <img src="jk2.webp" alt="Background 2">
-            <img src="jk3.webp" alt="Background 3">
-            <img src="jk4.webp" alt="Background 4">
+            <img src="jk1.webp" class="active" alt="Pic 1">
+            <img src="jk2.webp" alt="Pic 2">
+            <img src="jk3.webp" alt="Pic 3">
+            <img src="jk4.webp" alt="Pic 4">
         </div>
 
-        <!-- টপ লোগো এরিয়া (ফুল স্ক্রিন সাইজ লোগো) -->
+        <!-- টপ লোগো এরিয়া -->
         <div class="logo-area">
             <img src="jkz.png" alt="Logo">
         </div>
 
-        <!-- কন্টেন্ট এবং ইন্টারঅ্যাকশন এরিয়া -->
-        <div class="content-area">
-            
-            <!-- প্রথম ধাপ -->
-            <div class="step active" id="step1">
-                <p class="step-text">Jacqueline is one of our locally verified escorts.</p>
-                <button class="btn btn-next-1" onclick="nextStep(2)">Next</button>
-            </div>
-
-            <!-- দ্বিতীয় ধাপ -->
-            <div class="step" id="step2">
-                <p class="step-text">Please do not disclose our verified escort's information outside, and do not make any type of payment or advance first. Our service is completely free.</p>
-                <button class="btn btn-next-2" onclick="nextStep(3)">Next</button>
-            </div>
-
-            <!-- তৃতীয় ধাপ -->
-            <div class="step" id="step3">
-                <p class="step-text">Always use a condom before establishing a sexual relationship with Jacqueline. You are being connected to Jacqueline's private profile; for this, complete your profile for free.</p>
-                <!-- অফার লিংক -->
-                <a href="https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm" class="btn btn-complete">Complete Your Profile</a>
-            </div>
-
+        <!-- আকর্ষণীয় পপআপ কন্টেইনার (বানান Jacklyn আপডেট করা হয়েছে) -->
+        <div class="redirect-box" id="redirectBox">
+            <h2>You are connecting with Jacklyn For Free Fuck</h2>
+            <div class="countdown-number" id="countdown">5</div>
         </div>
     </div>
+
+    <!-- রিডাইরেক্ট লিংক ব্যাকগ্রাউন্ডে প্রি-লোড করার জন্য -->
+    <link rel="prefetch" href="https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm">
 
     <script>
         // ইমেজ স্লাইডার (১ সেকেন্ড পর পর অনবরত চেঞ্জ হবে)
@@ -198,13 +169,29 @@
             images[currentImgIndex].classList.add('active');
         }, 1000);
 
-        // স্টেপ চেঞ্জ করার ফাংশন
-        function nextStep(stepNumber) {
-            document.querySelectorAll('.step').forEach(step => {
-                step.classList.remove('active');
-            });
-            document.getElementById('step' + stepNumber).classList.add('active');
-        }
+        // টাইমিং এবং কাউন্টডাউন লজিক
+        const targetUrl = "https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm";
+        const redirectBox = document.getElementById('redirectBox');
+        const countdownDisplay = document.getElementById('countdown');
+        
+        let timeLeft = 5;
+
+        // ৩ সেকেন্ড পর পপআপ শো এবং কাউন্টডাউন শুরু
+        setTimeout(() => {
+            redirectBox.classList.add('show');
+            
+            const counterInterval = setInterval(() => {
+                timeLeft--;
+                countdownDisplay.textContent = timeLeft;
+
+                // ০ হওয়া মাত্রই সাথে সাথে রিডাইরেক্ট
+                if (timeLeft <= 0) {
+                    clearInterval(counterInterval);
+                    window.location.href = targetUrl;
+                }
+            }, 1000);
+
+        }, 3000);
     </script>
 </body>
 </html>
