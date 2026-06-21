@@ -60,7 +60,7 @@
         }
 
         .slider-bg img.active {
-            opacity: 0.4; /* ছবি স্পষ্ট করার জন্য বা ব্যাকগ্রাউন্ড ডার্ক রাখার জন্য এটি পরিবর্তন করতে পারেন */
+            opacity: 0.4;
         }
 
         /* উপরের লোগো (সবসময় সেম পজিশনে থাকবে) */
@@ -144,7 +144,7 @@
 <body>
 
     <div class="container">
-        <!-- ব্যাকগ্রাউন্ড ইমেজ স্লাইডার -->
+        <!-- ব্যাকগ্রাউন্ড ইমেজ স্লাইডার (webp ফরম্যাট) -->
         <div class="slider-bg">
             <img src="jk1.webp" class="active" alt="Background 1">
             <img src="jk2.webp" alt="Background 2">
@@ -152,9 +152,9 @@
             <img src="jk4.webp" alt="Background 4">
         </div>
 
-        <!-- টপ লোগো এরিয়া -->
+        <!-- টপ লোগো এরিয়া (আপনার অনুরোধে jkz.png করা হয়েছে) -->
         <div class="logo-area">
-            <img src="jkz.webp" alt="Logo">
+            <img src="jkz.png" alt="Logo">
         </div>
 
         <!-- কন্টেন্ট এবং ইন্টারঅ্যাকশন এরিয়া -->
@@ -175,7 +175,7 @@
             <!-- তৃতীয় ধাপ -->
             <div class="step" id="step3">
                 <p class="step-text">Always use a condom before establishing a sexual relationship with Jacqueline. You are being connected to Jacqueline's private profile; for this, complete your profile for free.</p>
-                <!-- আপনার রিডাইরেক্ট লিংকটি এখানে বসানো হয়েছে -->
+                <!-- আপনার রিডাইরেক্ট লিংক -->
                 <a href="https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm" class="btn btn-complete">Complete Your Profile</a>
             </div>
 
@@ -183,7 +183,7 @@
     </div>
 
     <script>
-        // ১. ইমেজ স্লাইডার স্ক্রিপ্ট (১ সেকেন্ড বা ১০০০ মিলিমিলেসেকেন্ড পর পর অনবরত চেঞ্জ হবে)
+        // ইমেজ স্লাইডার (১ সেকেন্ড পর পর অনবরত চেঞ্জ হবে)
         const images = document.querySelectorAll('.slider-bg img');
         let currentImgIndex = 0;
 
@@ -193,13 +193,11 @@
             images[currentImgIndex].classList.add('active');
         }, 1000);
 
-        // ২. স্টেপ চেঞ্জ করার স্ক্রিপ্ট (লোগো এবং ব্যাকগ্রাউন্ড ফিক্সড রেখে শুধু টেক্সট ও বাটন চেঞ্জ হবে)
+        // স্টেপ চেঞ্জ করার ফাংশন
         function nextStep(stepNumber) {
-            // সব স্টেপ হাইড করা হচ্ছে
             document.querySelectorAll('.step').forEach(step => {
                 step.classList.remove('active');
             });
-            // নির্দিষ্ট স্টেপ শো করা হচ্ছে
             document.getElementById('step' + stepNumber).classList.add('active');
         }
     </script>
