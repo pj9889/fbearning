@@ -63,18 +63,22 @@
             opacity: 0.4;
         }
 
-        /* উপরের লোগো (সবসময় সেম পজিশনে থাকবে এবং বড় করা হয়েছে) */
+        /* উপরের লোগো (ডান থেকে বাম পর্যন্ত প্রায় পুরো ডিসপ্লে জুড়ে বড় করা হয়েছে) */
         .logo-area {
             position: relative;
             z-index: 2;
             margin-top: 25px;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .logo-area img {
-            max-width: 220px; /* লোগোর সাইজ এখান থেকে বড় করা হয়েছে */
-            width: 80%;       /* রেসপন্সিভ রাখার জন্য */
-            height: auto;
+            width: 85%;       /* ডিসপ্লের ডান থেকে বামের ৮৫% জায়গা জুড়ে থাকবে */
+            max-width: 380px; /* সর্বোচ্চ চওড়ার সীমা বাড়িয়ে দেওয়া হলো */
+            height: auto;     /* হাইট অটোমেটিক অ্যাডজাস্ট হবে */
+            object-fit: contain;
         }
 
         /* লেখার অংশ এবং বাটন */
@@ -153,7 +157,7 @@
             <img src="jk4.webp" alt="Background 4">
         </div>
 
-        <!-- টপ লোগো এরিয়া (বড় সাইজ এবং jkz.png) -->
+        <!-- টপ লোগো এরিয়া (ফুল স্ক্রিন সাইজ লোগো) -->
         <div class="logo-area">
             <img src="jkz.png" alt="Logo">
         </div>
