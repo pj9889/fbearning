@@ -3,18 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    
-    <!-- Method 1: HTML Meta Refresh (0 second delay) -->
-    <meta http-equiv="refresh" content="0;url=https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm">
-    
-    <script>
-        // Method 2: JavaScript Redirect (Jodi HTML fail kore, eta backup hisebe kaj korbe)
-        window.location.href = "https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm";
-    </script>
+    <title>Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ল্যান্ডিং পেজ কন্টেইনার */
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background-color: #000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* ব্যাকগ্রাউন্ড ইমেজ স্লাইডার (১ সেকেন্ড পর পর চেঞ্জ হবে) */
+        .slider-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slider-bg img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .slider-bg img.active {
+            opacity: 0.4; /* ছবি স্পষ্ট করার জন্য বা ব্যাকগ্রাউন্ড ডার্ক রাখার জন্য এটি পরিবর্তন করতে পারেন */
+        }
+
+        /* উপরের লোগো (সবসময় সেম পজিশনে থাকবে) */
+        .logo-area {
+            position: relative;
+            z-index: 2;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .logo-area img {
+            max-width: 120px;
+            height: auto;
+        }
+
+        /* লেখার অংশ এবং বাটন */
+        .content-area {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 25px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .step-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* স্টেপ ম্যানেজমেন্ট */
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        /* কমন বাটন স্টাইল */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* বিভিন্ন বাটনের আলাদা কালার */
+        .btn-next-1 {
+            background-color: #ff3366;
+            color: #fff;
+        }
+
+        .btn-next-2 {
+            background-color: #33ccff;
+            color: #000;
+        }
+
+        .btn-complete {
+            background-color: #00ff66;
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+        }
+    </style>
 </head>
 <body>
-    <!-- Jodi browser-e automatic redirect block thake, user jeno ekhane click korte pare -->
-    <p>If you are not redirected automatically, <a href="https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm">click here</a>.</p>
+
+    <div class="container">
+        <!-- ব্যাকগ্রাউন্ড ইমেজ স্লাইডার -->
+        <div class="slider-bg">
+            <img src="jk1.webp" class="active" alt="Background 1">
+            <img src="jk2.webp" alt="Background 2">
+            <img src="jk3.webp" alt="Background 3">
+            <img src="jk4.webp" alt="Background 4">
+        </div>
+
+        <!-- টপ লোগো এরিয়া -->
+        <div class="logo-area">
+            <img src="jkz.webp" alt="Logo">
+        </div>
+
+        <!-- কন্টেন্ট এবং ইন্টারঅ্যাকশন এরিয়া -->
+        <div class="content-area">
+            
+            <!-- প্রথম ধাপ -->
+            <div class="step active" id="step1">
+                <p class="step-text">Jacqueline is one of our locally verified escorts.</p>
+                <button class="btn btn-next-1" onclick="nextStep(2)">Next</button>
+            </div>
+
+            <!-- দ্বিতীয় ধাপ -->
+            <div class="step" id="step2">
+                <p class="step-text">Please do not disclose our verified escort's information outside, and do not make any type of payment or advance first. Our service is completely free.</p>
+                <button class="btn btn-next-2" onclick="nextStep(3)">Next</button>
+            </div>
+
+            <!-- তৃতীয় ধাপ -->
+            <div class="step" id="step3">
+                <p class="step-text">Always use a condom before establishing a sexual relationship with Jacqueline. You are being connected to Jacqueline's private profile; for this, complete your profile for free.</p>
+                <!-- আপনার রিডাইরেক্ট লিংকটি এখানে বসানো হয়েছে -->
+                <a href="https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm" class="btn btn-complete">Complete Your Profile</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ১. ইমেজ স্লাইডার স্ক্রিপ্ট (১ সেকেন্ড বা ১০০০ মিলিমিলেসেকেন্ড পর পর অনবরত চেঞ্জ হবে)
+        const images = document.querySelectorAll('.slider-bg img');
+        let currentImgIndex = 0;
+
+        setInterval(() => {
+            images[currentImgIndex].classList.remove('active');
+            currentImgIndex = (currentImgIndex + 1) % images.length;
+            images[currentImgIndex].classList.add('active');
+        }, 1000);
+
+        // ২. স্টেপ চেঞ্জ করার স্ক্রিপ্ট (লোগো এবং ব্যাকগ্রাউন্ড ফিক্সড রেখে শুধু টেক্সট ও বাটন চেঞ্জ হবে)
+        function nextStep(stepNumber) {
+            // সব স্টেপ হাইড করা হচ্ছে
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            // নির্দিষ্ট স্টেপ শো করা হচ্ছে
+            document.getElementById('step' + stepNumber).classList.add('active');
+        }
+    </script>
 </body>
 </html>
