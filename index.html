@@ -206,7 +206,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .verified-badge {
@@ -223,10 +223,23 @@
         }
 
         .profile-info {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 5px;
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 6px;
             font-weight: 500;
+        }
+
+        /* আকর্ষণীয় ডিসটেন্স স্টাইল */
+        .distance-badge {
+            background: #e6f0ff;
+            color: #0072ff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 13px;
+            display: inline-block;
+            margin-bottom: 8px;
+            border: 1px solid #b3d4ff;
         }
 
         .buffering-container {
@@ -240,16 +253,24 @@
         .spinner {
             width: 50px;
             height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #ff3366;
+            border: 5px solid #e0e0e0;
+            border-top: 5px solid #0072ff;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+
+        /* কানেক্টিং লাইভ টেক্সট স্টাইল */
+        .connecting-text {
+            color: #0072ff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .alert-text {
@@ -301,8 +322,7 @@
                     <div class="profile-name">
                         Jacklyn <span class="verified-badge">✓</span>
                     </div>
-                    <div class="profile-info" style="color: #ff9900; font-weight: bold;">Premium Quality</div>
-                    <div class="profile-info">Distance: 4km away</div>
+                    <div class="distance-badge">📍 4km away</div>
                     <div class="profile-info">Age: 25</div>
                     <div class="profile-info">Mobile: 0478 576***</div>
                 </div>
@@ -312,6 +332,7 @@
             <div class="step" id="step4">
                 <div class="buffering-container">
                     <div class="spinner" id="loadingSpinner"></div>
+                    <div class="connecting-text">Connecting with Jacklyn profile...</div>
                     <div class="alert-text">FREE REGISTRATION REQUIRED</div>
                 </div>
             </div>
