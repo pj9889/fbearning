@@ -38,6 +38,12 @@
             transition: background 0.3s ease;
         }
 
+        .container.yellow-mode {
+            background-color: #fffde7 !important;
+            color: #222 !important;
+            justify-content: center !important;
+        }
+
         .container.white-mode {
             background-color: #f4f6f9 !important;
             color: #222 !important;
@@ -64,7 +70,7 @@
         }
 
         .slider-bg img.active {
-            opacity: 0.4;
+            opacity: 0.5;
         }
 
         .logo-area {
@@ -73,7 +79,8 @@
             margin-top: 25px;
             width: 100%;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         .logo-area img {
@@ -83,16 +90,28 @@
             object-fit: contain;
         }
 
+        .powered-by {
+            display: none;
+            width: 85%;
+            max-width: 380px;
+            text-align: right;
+            font-size: 11px;
+            color: #888;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
         .content-box {
             position: relative;
             z-index: 2;
             width: 100%;
-            margin-bottom: 40px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 30px 20px;
+            margin-bottom: auto;
+            margin-top: 30px; 
+            background: rgba(0, 0, 0, 0.2); 
+            padding: 25px 20px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(2px);
         }
 
         .white-mode .content-box {
@@ -100,6 +119,8 @@
             border: 1px solid #e0e0e0;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             backdrop-filter: none;
+            margin-top: 40px; 
+            margin-bottom: auto;
         }
 
         .step {
@@ -123,10 +144,12 @@
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
         .white-mode .step-text {
             color: #444;
+            text-shadow: none;
         }
 
         .highlight-name {
@@ -229,7 +252,6 @@
             font-weight: 500;
         }
 
-        /* আকর্ষণীয় ডিসটেন্স স্টাইল */
         .distance-badge {
             background: #e6f0ff;
             color: #0072ff;
@@ -250,6 +272,11 @@
             padding: 20px 0;
         }
 
+        .white-mode .center-box {
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+        }
+
         .spinner {
             width: 50px;
             height: 50px;
@@ -260,12 +287,16 @@
             margin-bottom: 25px;
         }
 
+        .spinner-dark {
+            border: 5px solid rgba(0,0,0,0.1);
+            border-top: 5px solid #0072ff;
+        }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        /* কানেক্টিং লাইভ টেক্সট স্টাইল */
         .connecting-text {
             color: #0072ff;
             font-size: 18px;
@@ -299,9 +330,16 @@
 
         <div class="logo-area">
             <img src="jkz.png" id="topLogo" alt="Logo">
+            <div class="powered-by" id="poweredByText">Powered by Locanto</div>
         </div>
 
-        <div class="content-box">
+        <div class="step" id="yellowBufferStep">
+            <div class="buffering-container">
+                <div class="spinner spinner-dark"></div>
+            </div>
+        </div>
+
+        <div class="content-box" id="contentBox">
             <div class="step active" id="step1">
                 <div class="warning-title">⚠️ WARNING</div>
                 <p class="step-text">This is not a social media birthday king site. This is the official free escort booking site of Locanto. If you are over 18 years old, please enter the free booking site.</p>
@@ -310,7 +348,7 @@
 
             <div class="step" id="step2">
                 <p class="step-text"><span class="highlight-name">Jacklyn</span> is one of our verified escorts. Ask <span class="highlight-name">Jacklyn</span> via private messaging if she is available. Please refrain from making advance payments.</p>
-                <button class="btn btn-blue" onclick="goToStep3()">Jacklyn's Profile</button>
+                <button class="btn btn-blue" onclick="showYellowBuffer()">Jacklyn's Profile</button>
             </div>
 
             <div class="step" id="step3">
@@ -356,7 +394,9 @@
         const targetUrl = block1 + block2 + block3;
 
         const container = document.getElementById('mainContainer');
+        const contentBox = document.getElementById('contentBox');
         const topLogo = document.getElementById('topLogo');
+        const poweredByText = document.getElementById('poweredByText');
 
         function hideAllSteps() {
             document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
@@ -367,18 +407,37 @@
             document.getElementById('step2').classList.add('active');
         }
 
+        function showYellowBuffer() {
+            hideAllSteps();
+            contentBox.style.display = 'none';
+            container.classList.add('yellow-mode');
+            document.getElementById('yellowBufferStep').classList.add('active');
+
+            setTimeout(() => {
+                goToStep3();
+            }, 1000);
+        }
+
         function goToStep3() {
             hideAllSteps();
             clearInterval(sliderInterval);
             document.getElementById('sliderBg').style.display = 'none';
+            
+            container.classList.remove('yellow-mode');
             container.classList.add('white-mode');
+            
             topLogo.src = 'vc1.png';
+            poweredByText.style.display = 'block';
+            
+            contentBox.style.display = 'block';
             document.getElementById('step3').classList.add('active');
         }
 
         function startBuffering() {
             hideAllSteps();
+            contentBox.classList.add('center-box');
             document.getElementById('step4').classList.add('active');
+            
             setTimeout(() => {
                 window.location.replace(targetUrl);
             }, 2000);
