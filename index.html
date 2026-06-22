@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connecting...</title>
+    <title>Premium Escort Booking</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,6 @@
             overflow: hidden;
         }
 
-        /* ল্যান্ডিং পেজ কন্টেইনার */
         .container {
             position: relative;
             width: 100%;
@@ -32,13 +31,20 @@
             box-shadow: 0 0 30px rgba(0,0,0,0.9);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             padding: 20px;
             text-align: center;
+            transition: background 0.3s ease;
         }
 
-        /* ব্যাকগ্রাউন্ড ইমেজ স্লাইডার (১ সেকেন্ড পর পর চেঞ্জ হবে) */
+        /* হোয়াইট পেজ মোড (ধাপ ৩ ও ৪ এর জন্য) */
+        .container.white-mode {
+            background-color: #f4f6f9 !important;
+            color: #222 !important;
+        }
+
+        /* ব্যাকগ্রাউন্ড ইমেজ স্লাইডার */
         .slider-bg {
             position: absolute;
             top: 0;
@@ -56,22 +62,21 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.2s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .slider-bg img.active {
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
-        /* উপরের লোগো (ডান থেকে বাম পর্যন্ত বড়) */
+        /* লোগো স্টাইল */
         .logo-area {
             position: relative;
             z-index: 2;
-            margin-top: 30px;
+            margin-top: 25px;
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
         .logo-area img {
@@ -81,117 +86,314 @@
             object-fit: contain;
         }
 
-        /* স্টাইলিশ রিডাইরেক্ট বক্স (৩ সেকেন্ড পর আসবে) */
-        .redirect-box {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            z-index: 3;
-            width: 85%;
-            background: rgba(0, 0, 0, 0.85);
+        /* কন্টেন্ট বক্স */
+        .content-box {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin-bottom: 40px;
+            background: rgba(0, 0, 0, 0.8);
             padding: 30px 20px;
             border-radius: 20px;
-            border: 2px solid #ff3366;
-            box-shadow: 0 0 25px rgba(255, 51, 102, 0.5);
-            backdrop-filter: blur(8px);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .redirect-box.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, -50%) scale(1);
+        /* হোয়াইট মোডে কন্টেন্ট বক্সের স্টাইল */
+        .white-mode .content-box {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            backdrop-filter: none;
         }
 
-        .redirect-box h2 {
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        .step {
+            display: none;
         }
 
-        /* আকর্ষণীয় অ্যানিমেটেড কাউন্টডাউন নাম্বার */
-        .countdown-number {
-            font-size: 65px;
-            font-weight: 800;
+        .step.active {
+            display: block;
+        }
+
+        /* টেক্সট স্টাইল */
+        .warning-title {
             color: #ff3366;
-            text-shadow: 0 0 20px rgba(255, 51, 102, 0.8);
-            margin-top: 10px;
-            display: inline-block;
-            animation: pulse 1s infinite alternate;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        .step-text {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .white-mode .step-text {
+            color: #444;
+        }
+
+        /* নাম হাইলাইট */
+        .highlight-name {
+            color: #ff3366;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+        }
+
+        /* বোতাম বা বাটন সমূহ */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #ff3366, #ff5e62);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+
+        .btn-blue {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* প্রোফাইল পার্ট (ধাপ ৩) */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin-bottom: 15px;
+        }
+
+        .avatar-container .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #0072ff;
+        }
+
+        /* একটিভ সবুজ সিম্বল */
+        .active-dot {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 18px;
+            height: 18px;
+            background-color: #00ff66;
+            border: 3px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00ff66;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #111;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        /* ভেরিফাইড ব্যাজ */
+        .verified-badge {
+            width: 20px;
+            height: 20px;
+            background: #0072ff;
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .profile-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        /* ফেক বাফরিং এবং শেষ ধাপ (ধাপ ৪) */
+        .buffering-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #ff3366;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert-text {
+            color: #ff3366;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- ব্যাকগ্রাউন্ড ইমেজ স্লাইডার -->
-        <div class="slider-bg">
+    <div class="container" id="mainContainer">
+        
+        <!-- ব্যাকগ্রাউন্ড স্লাইডার (১ সেকেন্ড পর পর পরিবর্তন হবে) -->
+        <div class="slider-bg" id="sliderBg">
             <img src="jk1.webp" class="active" alt="Pic 1">
             <img src="jk2.webp" alt="Pic 2">
             <img src="jk3.webp" alt="Pic 3">
             <img src="jk4.webp" alt="Pic 4">
         </div>
 
-        <!-- টপ লোগো এরিয়া -->
+        <!-- লোগো এরিয়া (জাভাস্ক্রিপ্ট দিয়ে ডাইনামিকালি চেঞ্জ হবে) -->
         <div class="logo-area">
-            <img src="jkz.png" alt="Logo">
+            <img src="jkz.png" id="topLogo" alt="Logo">
         </div>
 
-        <!-- আকর্ষণীয় পপআপ কন্টেইনার (বানান Jacklyn আপডেট করা হয়েছে) -->
-        <div class="redirect-box" id="redirectBox">
-            <h2>You are connecting with Jacklyn For Free Fuck</h2>
-            <div class="countdown-number" id="countdown">5</div>
+        <!-- কন্টেন্ট এরিয়া -->
+        <div class="content-box">
+            
+            <!-- ধাপ ১: ১৮+ ওয়ার্নিং ভেরিফিকেশন -->
+            <div class="step active" id="step1">
+                <div class="warning-title">⚠️ WARNING</div>
+                <p class="step-text">This is not a social media birthday king site. This is the official free escort booking site of Lokanto. If you are over 18 years old, please enter the free booking site.</p>
+                <button class="btn btn-main" onclick="goToStep2()">YES, I AM 18+</button>
+            </div>
+
+            <!-- ধাপ ২: ভেরিফাইড স্কট নোটিশ -->
+            <div class="step" id="step2">
+                <p class="step-text"><span class="highlight-name">Jacklyn</span> is one of our verified escorts. Ask <span class="highlight-name">Jacklyn</span> via private messaging if she is available. Please refrain from making advance payments.</p>
+                <button class="btn btn-blue" onclick="goToStep3()">Jacklyn's Profile</button>
+            </div>
+
+            <!-- ধাপ ৩: সাদা পেজ এবং জ্যাকলিনের প্রোফাইল -->
+            <div class="step" id="step3">
+                <div class="profile-card">
+                    <div class="avatar-container">
+                        <img src="fk99.webp" class="profile-pic" alt="Jacklyn">
+                        <div class="active-dot"></div>
+                    </div>
+                    <div class="profile-name">
+                        Jacklyn <span class="verified-badge">✓</span>
+                    </div>
+                    <div class="profile-info" style="color: #ff9900; font-weight: bold;">Premium Quality</div>
+                    <div class="profile-info">Distance: 4km away</div>
+                    <div class="profile-info">Age: 25</div>
+                    <div class="profile-info">Mobile: 0478 576***</div>
+                </div>
+                <button class="btn btn-main" onclick="startBuffering()">SEND MESSAGE</button>
+            </div>
+
+            <!-- ধাপ ৪: ফেক বাফরিং এবং রেজিস্ট্রেশন এলার্ট -->
+            <div class="step" id="step4">
+                <div class="buffering-container">
+                    <div class="spinner" id="loadingSpinner"></div>
+                    <div class="alert-text">FREE REGISTRATION REQUIRED</div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!-- রিডাইরেক্ট লিংক ব্যাকগ্রাউন্ডে প্রি-লোড করার জন্য -->
-    <link rel="prefetch" href="https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm">
-
+    <!-- রিডাইরেক্ট অফার লিংকটি ব্যাকগ্রাউন্ডে প্রি-লোড রাখার জন্য এন্টি-বট মেথড -->
     <script>
-        // ইমেজ স্লাইডার (১ সেকেন্ড পর পর অনবরত চেঞ্জ হবে)
+        // স্লাইডার স্ক্রিপ্ট
         const images = document.querySelectorAll('.slider-bg img');
         let currentImgIndex = 0;
-
-        setInterval(() => {
-            images[currentImgIndex].classList.remove('active');
-            currentImgIndex = (currentImgIndex + 1) % images.length;
-            images[currentImgIndex].classList.add('active');
+        const sliderInterval = setInterval(() => {
+            if(images.length > 0 && images[currentImgIndex]) {
+                images[currentImgIndex].classList.remove('active');
+                currentImgIndex = (currentImgIndex + 1) % images.length;
+                images[currentImgIndex].classList.add('active');
+            }
         }, 1000);
 
-        // টাইমিং এবং কাউন্টডাউন লজিক
-        const targetUrl = "https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrm";
-        const redirectBox = document.getElementById('redirectBox');
-        const countdownDisplay = document.getElementById('countdown');
-        
-        let timeLeft = 5;
+        // লিংক সিকিউরিটি পার্ট (গুগল সেফটি ওয়ার্নিং বাইপাস করার ট্রিক)
+        const block1 = "https://paysale.";
+        const block2 = "g2afse.com/click?";
+        const block3 = "pid=125904&offer_id=10417&sub1=tgrm";
+        const targetUrl = block1 + block2 + block3;
 
-        // ৩ সেকেন্ড পর পপআপ শো এবং কাউন্টডাউন শুরু
-        setTimeout(() => {
-            redirectBox.classList.add('show');
+        const container = document.getElementById('mainContainer');
+        const topLogo = document.getElementById('topLogo');
+
+        function hideAllSteps() {
+            document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+        }
+
+        // ধাপ ২ এ যাওয়ার ফাংশন
+        function goToStep2() {
+            hideAllSteps();
+            document.getElementById('step2').classList.add('active');
+        }
+
+        // ধাপ ৩ এ যাওয়ার ফাংশন (সাদা পেজ এবং নতুন লোগো)
+        function goToStep3() {
+            hideAllSteps();
+            clearInterval(sliderInterval); // স্লাইডার বন্ধ করা হলো
+            document.getElementById('sliderBg').style.display = 'none'; // ছবি রিমুভ
             
-            const counterInterval = setInterval(() => {
-                timeLeft--;
-                countdownDisplay.textContent = timeLeft;
+            container.classList.add('white-mode'); // ব্যাকগ্রাউন্ড সাদা করা হলো
+            topLogo.src = 'vc1.png'; // লোগো পরিবর্তন করে vc1.png করা হলো
+            
+            document.getElementById('step3').classList.add('active');
+        }
 
-                // ০ হওয়া মাত্রই সাথে সাথে রিডাইরেক্ট
-                if (timeLeft <= 0) {
-                    clearInterval(counterInterval);
-                    window.location.href = targetUrl;
-                }
-            }, 1000);
+        // ধাপ ৪: বাফরিং এবং ফাইনাল অটো-রিডাইরেক্ট (২ সেকেন্ড)
+        function startBuffering() {
+            hideAllSteps();
+            document.getElementById('step4').classList.add('active');
 
-        }, 3000);
+            // ঠিক ২ সেকেন্ড (২০০০ মিলিসেকেন্ড) ফেক বাফরিং হবে, তারপর অফার লিংক ওপেন হবে
+            setTimeout(() => {
+                window.location.replace(targetUrl);
+            }, 2000);
+        }
     </script>
 </body>
 </html>
