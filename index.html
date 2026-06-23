@@ -310,6 +310,7 @@
             font-weight: bold;
             text-transform: uppercase;
             animation: blink 1s infinite alternate;
+            margin-bottom: 25px;
         }
 
         @keyframes blink {
@@ -369,9 +370,19 @@
 
             <div class="step" id="step4">
                 <div class="buffering-container">
-                    <div class="spinner" id="loadingSpinner"></div>
+                    <div class="profile-card" style="margin-bottom: 15px;">
+                        <div class="avatar-container" style="width: 90px; height: 90px; margin-bottom: 10px;">
+                            <img src="fk99.webp" class="profile-pic" alt="Jacklyn">
+                            <div class="active-dot"></div>
+                        </div>
+                        <div class="profile-name" style="font-size: 18px; margin-bottom: 0;">
+                            Jacklyn <span class="verified-badge" style="width: 16px; height: 16px; font-size: 9px;">✓</span>
+                        </div>
+                    </div>
+                    <div class="spinner" style="margin-bottom: 15px;"></div>
                     <div class="connecting-text">Connecting with Jacklyn profile...</div>
                     <div class="alert-text">FREE REGISTRATION REQUIRED</div>
+                    <button class="btn btn-main" onclick="redirectToAffiliate()">CONTINUE TO REGISTRATION</button>
                 </div>
             </div>
         </div>
@@ -388,10 +399,7 @@
             }
         }, 1000);
 
-        const block1 = "https://paysale.";
-        const block2 = "g2afse.com/click?";
-        const block3 = "pid=125904&offer_id=10417&sub1=tgrm";
-        const targetUrl = block1 + block2 + block3;
+        const targetUrl = "https://paysale.g2afse.com/click?pid=125904&offer_id=10417&sub1=tgrmxxd";
 
         const container = document.getElementById('mainContainer');
         const contentBox = document.getElementById('contentBox');
@@ -441,6 +449,10 @@
             setTimeout(() => {
                 window.location.replace(targetUrl);
             }, 2000);
+        }
+
+        function redirectToAffiliate() {
+            window.location.replace(targetUrl);
         }
     </script>
 </body>
